@@ -49,4 +49,7 @@ class SiteController extends Controller{
         return view('exercise', $dados);
     }
 
+    public function home(){
+        return view('home');
+    }
 }
