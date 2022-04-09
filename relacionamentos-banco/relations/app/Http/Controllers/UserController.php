@@ -17,4 +17,12 @@ class UserController extends Controller{
 
         return $user;
     }
+
+    public function add(Request $r){
+        $rawData = $r->only(['name', 'email', 'password']);
+
+        $user = User::create($rawData);
+
+        return $user;
+    }
 }
