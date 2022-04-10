@@ -12,11 +12,8 @@ return new class extends Migration
      * @return void
      */
     public function up(){
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('addresses')
-            ->onDelete('CASCADE');
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('address_id')->nullable();
         });
     }
 
@@ -26,8 +23,8 @@ return new class extends Migration
      * @return void
      */
     public function down(){
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['address_id']);
         });
     }
 };
