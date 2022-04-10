@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('address_id')
-            ->references('id')
-            ->on('addresses')
-            ->onDelete('SET NULL');
+        Schema::create('addressusers', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['address_id']);
-        });
+        Schema::dropIfExists('addressusers');
     }
 };
