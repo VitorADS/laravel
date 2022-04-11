@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 class ConfigController extends Controller{
 
     public function index(){
-        return view('config');
+        $data = [
+            'name' => 'Vitor',
+            'age' => 60
+        ];
+
+        return view('config', $data);
     }
 }
