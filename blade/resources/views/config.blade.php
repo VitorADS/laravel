@@ -5,22 +5,29 @@
 @section('content')
     <h1>Configuracoes</h1><br>
 
-    Nome: {{$name}} - Idade: {{$age}} <br>
+    Nome: {{$name}} - Idade: {{$age}} <br><br>
 
-    @if($age > 18 && $age < 60)
-        Eu sou maior de idade.
-    @elseif($age >= 60 && $age <= 120)
-        Eu sou idoso.
+    <!--@for ($i = 0; $i < 10; $i++)
+        O valor é {{$i}} <br/>
+    @endfor -->
+
+    <!--@if (count($lista) > 0)
+    Lista do bolo:
+    <ul>
+        @foreach ($lista as $item)
+            <li>{{$item['nome']}}</li>
+        @endforeach
+    </ul>
     @else
-        Eu nao sou maior de idade.
-    @endif <br>
+        Nao ha ingredientes.
+    @endif-->
 
-    @isset($version)
-        Existe uma versao e é a: {{$version}} <br>
-    @endisset
-
-    @empty($cidade)
-        Não existe uma cidade. <br>
-    @endempty
+    <ul>
+        @forelse ($lista as $item)
+            <li>{{$item['nome']}} - Quantidade: {{$item['qt']}}</li>
+        @empty
+            Nao ha ingredientes.
+        @endforelse
+    </ul>
 
 @endsection
