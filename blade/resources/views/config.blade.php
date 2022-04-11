@@ -22,6 +22,11 @@
         Nao ha ingredientes.
     @endif-->
 
+
+    <x-alert>
+        @slot('type') teste @endslot
+         Alguma frase qualquer...
+    </x-alert>
     <ul>
         @forelse ($lista as $item)
             <li>{{$item['nome']}} - Quantidade: {{$item['qt']}}</li>
