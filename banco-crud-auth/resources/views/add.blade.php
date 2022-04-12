@@ -5,10 +5,12 @@
 @section('content')
     <h1>Adicao</h1>
 
-    @if (session('warning'))
+    @if ($errors->any())
         <x-alert>
-            @slot('type') Aviso: @endslot <br/>
-            {{ session('warning') }}
+            @slot('type') Error: @endslot <br/>
+            @foreach ($errors->all() as $error)
+                {{ $error }} <br/>
+            @endforeach
         </x-alert>
     @endif
 
