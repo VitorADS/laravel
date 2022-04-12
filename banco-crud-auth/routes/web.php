@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
 Route::resource('todo', TodoController::class);
 /*
 GET - /todo - index - todo.index - LISTA OS ITENS
@@ -28,7 +32,7 @@ DELETE - /todo/{id} destroy - todo.destroy - DELETAR O ITEM
 
 Route::prefix('/tarefas')->group(function(){
 
-    Route::get('/', [TarefasController::class, 'list'])->name('tarefas.list');
+    Route::get('/', [TarefasController::class, 'list'])->middleware('auth')->name('tarefas.list');
 
     Route::get('/add', [TarefasController::class, 'add'])->name('tarefas.add');
     Route::post('/add', [TarefasController::class, 'addAction']);
@@ -41,3 +45,8 @@ Route::prefix('/tarefas')->group(function(){
     Route::get('marcar/{id}', [TarefasController::class, 'done'])->name('tarefas.done');
 
 });
+
+/*Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+*/
