@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/tarefas')->group(function(){
 
-    Route::get('/', [TarefasController::class, 'list']);
+    Route::get('/', [TarefasController::class, 'list'])->name('tarefas.list');
 
-    Route::get('/add', [TarefasController::class, 'add']);
+    Route::get('/add', [TarefasController::class, 'add'])->name('tarefas.add');
     Route::post('/add', [TarefasController::class, 'addAction']);
 
-    Route::get('edit/{id}', [TarefasController::class, 'edit']);
+    Route::get('edit/{id}', [TarefasController::class, 'edit'])->name('tarefas.edit');
     Route::post('edit/{id}', [TarefasController::class, 'editAction']);
 
-    Route::get('delete/{id}', [TarefasController::class, 'del']);
+    Route::get('delete/{id}', [TarefasController::class, 'del'])->name('tarefas.del');
 
-    Route::get('marcar/{id}', [TarefasController::class, 'done']);
+    Route::get('marcar/{id}', [TarefasController::class, 'done'])->name('tarefas.done');
 
 });
