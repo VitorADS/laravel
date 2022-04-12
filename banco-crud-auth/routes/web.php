@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TarefasController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+*/
+
+Route::resource('todo', TodoController::class);
+/*
+GET - /todo - index - todo.index - LISTA OS ITENS
+GET - /todo/create - create - todo.create - FORM DE CRIACAO
+POST - /todo - store - todo.store - RECEBER OS DADOS E ADD ITEM
+GET - /todo/{id} - show - todo.show - VISUALIZAR ITEM INDIVIDUAL
+GET /todo/{id}/edit - edit - todo.edit - FORM DE EDICAO
+PUT - /todo/{id} - update - todo.update - RECEBER OS DADOS E UPDATE ITEM
+DELETE - /todo/{id} destroy - todo.destroy - DELETAR O ITEM
 */
 
 Route::prefix('/tarefas')->group(function(){
