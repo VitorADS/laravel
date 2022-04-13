@@ -44,7 +44,8 @@ class LoginController extends Controller
         $tries = $r->session()->get('login_tries', 0);
 
         $data = [
-            'tries' => $tries
+            'tries' => $tries,
+            'frase' => __('messages.teste')
         ];
         return view('auth.login', $data);
     }

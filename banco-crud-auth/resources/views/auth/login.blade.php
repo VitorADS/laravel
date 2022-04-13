@@ -11,6 +11,11 @@
         </x-alert><br/>
     @endif
 
+    @lang('messages.teste') <br/>
+    {{ $frase }} <br/>
+    {{ __('messages.din', ['count' => 5]) }} <br/>
+    @lang('messages.din', ['count' => 3])
+
     <form method="POST">
         @csrf
 
