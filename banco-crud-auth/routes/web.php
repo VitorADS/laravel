@@ -38,7 +38,7 @@ DELETE - /todo/{id} destroy - todo.destroy - DELETAR O ITEM
 
 Route::prefix('/tarefas')->group(function(){
 
-    Route::get('/', [TarefasController::class, 'list'])->middleware('auth')->name('tarefas.list');
+    Route::get('/', [TarefasController::class, 'list'])->name('tarefas.list');
 
     Route::get('/add', [TarefasController::class, 'add'])->name('tarefas.add');
     Route::post('/add', [TarefasController::class, 'addAction']);

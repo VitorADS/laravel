@@ -4,17 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class TarefasController extends Controller{
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function list(){
         //$list = DB::select('SELECT * FROM tarefas');
-        $list = Tarefa::all();
+        $data = [
+            'list' => Tarefa::all(),
+            'user' => Auth::user(),
+            'showTask' => Gate::allows('see-task')
+        ];
 
-        return view('list', [
-            'list' => $list
-        ]);
+        return view('list', $data);
     }
 
     public function add(){
