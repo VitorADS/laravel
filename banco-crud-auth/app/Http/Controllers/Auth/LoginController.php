@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -46,8 +46,6 @@ class LoginController extends Controller
 
     public function authenticate(Request $r){
         $creds = $r->only(['email', 'password']);
-        print_r($creds);
-        exit;
 
         if(Auth::attempt(['email' => $creds['email'], 'password' => $creds['password']])){
             return redirect()->route('tarefas.list');

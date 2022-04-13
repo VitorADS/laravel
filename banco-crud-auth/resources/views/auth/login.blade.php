@@ -18,8 +18,8 @@
             <input type="email" name="email" placeholder="Digite um e-mail" />
         </label><br/><br/>
         <label>
-            <input type="password" name="password" placeholder="Digite uma senha" /><br>
-        </label><br/>
+            <input type="password" name="password" placeholder="Digite uma senha" />
+        </label><br/><br/>
         <input type="submit" value="Entrar">
     </form>
 
