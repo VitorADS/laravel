@@ -23,4 +23,6 @@
         <input type="submit" value="Entrar">
     </form>
 
+    Tentativas: {{ $tries }}
+
 @endsection
