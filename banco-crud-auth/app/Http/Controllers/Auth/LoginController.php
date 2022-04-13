@@ -41,18 +41,25 @@ class LoginController extends Controller
     }
 
     public function index(){
-        return view('login');
+        return view('auth.login');
     }
 
     public function authenticate(Request $r){
         $creds = $r->only(['email', 'password']);
+        print_r($creds);
+        exit;
 
-        if(Auth::attempt($creds)){
+        if(Auth::attempt(['email' => $creds['email'], 'password' => $creds['password']])){
             return redirect()->route('tarefas.list');
         }else{
             return redirect()->route('login')->with(
                 'warning', 'E-mail e ou senha invalidos.'
             );
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

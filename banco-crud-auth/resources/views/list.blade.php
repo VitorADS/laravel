@@ -5,7 +5,9 @@
 @section('content')
     <h1>Listagem</h1>
 
-    <a href="{{ route('tarefas.add') }}">Adicionar Nova Tarefa</a>
+    <a href="/logout">Sair</a><br/><br/>
+
+    <a href="{{ route('tarefas.add') }}">Adicionar Nova Tarefa</a><br/>
 
     @if(count($list) > 0)
         <ul>
